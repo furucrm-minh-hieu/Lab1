@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../bootstrap-4.5.0-dist/css/bootstrap.min.css">
+  <script src="../bootstrap-4.5.0-dist/js/jquery-3.5.1.min.js"></script>
+  <script src="../bootstrap-4.5.0-dist/js/popper.min.js"></script>
+  <script src="../bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+  <script src="./data.js"></script>
+  <style>
+    /*position:relative: */
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+      top: 10px;
+      left: 100%;
+      margin-left: .1rem;
+      margin-right: .1rem;
+    }
+
+    .dropdown-submenu a::after {
+      transform: rotate(-90deg);
+      position: absolute;
+      right: 6px;
+      top: .8em;
+    }
+
+
+    .fakeimg {
+      background-color: gray;
+      padding: 20px
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: none;
+
+    }
+
+    .row {
+      background-color: #f1f1f1;
+    }
+
+    .w-100 {
+      width: 200px;
+      height: 400px;
+    }
+
+    @media (max-width: 767.98px) {
+      .offcanvas-collapse {
+        position: absolute;
+        top: 57px;
+        /* Chiều cao của navbar */
+        width: 100%;
+        height: 600%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        background-color: var(--gray-dark);
+        transition: transform .3s, -webkit-transform .3s;
+        transform: translateX(-110%);
+      }
+
+      .offcanvas-collapse.open {
+        -webkit-transform: translateX(-1rem);
+        transform: translateX(-1rem);
+        z-index: 99;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header-->
+  <header>
+    <div class="p-2 bg-warning text-center text-black">
+      <p><strong>Resize the browser window to see the responsive effect.</strong></p>
+    </div>
+    <div class="p-5 bg-info text-center text-black">
+      <h1>My website</h1>
+      <p>With a flexible layout</p>
+    </div>
+  </header>
+  <!-- Menu -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="offcanvas" data-target="#navbarNavDropdown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav" id="test">
+        <script>Menu();</script>
+      </ul>
+    </div>
+  </nav>
+  <!-- Content-->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 d-none d-md-block">
+        <h2>About Me</h2>
+        <h5>Photo of me:</h5>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        <h3>More Text</h3>
+        <p>Lorem ipsum dolor sit ame.</p>
+        <div class="fakeimg" style="height:60px;">Image</div><br>
+        <div class="fakeimg" style="height:60px;">Image</div><br>
+        <div class="fakeimg" style="height:60px;">Image</div>
+      </div>
+      <div class="col-sm-8">
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Dec 7, 2017</h5>
+        <div class="img">
+          <div id="myCarousel" class="carousel slide border" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="bootstrap-4.5.0-dist/img/Cantho.jpg" alt="Panther">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="bootstrap-4.5.0-dist/img/dânng.jpg" alt="Black Cat">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="bootstrap-4.5.0-dist/img/nhatrang.jpg" alt="Lion">
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Some text..</p>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco.
+        </p>
+        <br>
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <p>Some text..</p>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer bg-secondary">
+    <div class="text-black text-center py-3">Footer
+    </div>
+  </footer>
+  <a id="back-to-top" href="#" class="btn btn-outline-danger btn-lg back-to-top" role="button"><i
+      class="fas fa-chevron-up"></i>Top</a>
+  <script>
+    //Dropdown
+
+    $(function () {
+      $('[data-toggle="offcanvas"]').on('click', function () {
+        $('.offcanvas-collapse').toggleClass('open')
+      })
+    })
+    // Scroll 
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+          $('#back-to-top').fadeIn();
+        } else {
+          $('#back-to-top').fadeOut();
+        }
+      });
+      // scroll body to 0px on click
+      $('#back-to-top').click(function () {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 400);
+        return false;
+      });
+    });
+  </script>
+  
+  <script>
+    // menu-onclick
+    $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
+      if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
+      }
+      var $subMenu = $(this).next('.dropdown-menu');
+      $subMenu.toggleClass('show');
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+        $('.dropdown-submenu .show').removeClass('show');
+      });
+      return false;
+    });
+  </script>
+</body>
+
+
+</html>
